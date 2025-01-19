@@ -158,6 +158,6 @@ float ltr390_calculate_uvi(ltr390_t *ltr390, uint32_t uvs, float wfac) {
     uint8_t gainFactor = ltr390_calculate_gain_factor(ltr390->gain);
     uint8_t resolutionFactor = ltr390_calculate_resolution_factor(ltr390->resolution);
     
-    float uvi = (gainFactor / 18.0) * (pow(2, resolutionFactor) / pow(2, 20)) * LTR390_UVI_SENSITIVITY * wfac;
+    float uvi = uvs / ((gainFactor / 18.0) * (pow(2, resolutionFactor) / pow(2, 20)) * LTR390_UVI_SENSITIVITY) * wfac;
     return uvi;
 }
